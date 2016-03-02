@@ -7,23 +7,11 @@ To Do :- Add Description
 
 This is a list of all the public functions available in the API.
 
-## API.example
-
-### Example function
-
-Parameters:
-
-  * callback
-
-``` javascript
-API.example.runExample(function (err, data) {
-  // doSomething();
-});
-```
-
 ## API.room
 
 ### getInfo
+
+Retrieve general information about the pad.
 
 Parameters:
 
@@ -38,6 +26,8 @@ API.room.getInfo(function (data) {
 ```
 
 ### getUser
+
+Retrieve a user in the pad.
 
 Returns a [user] object.
 
@@ -57,6 +47,8 @@ API.room.getUser(123, function (data) {
 
 ### getUsers
 
+Retrieve the current users in the pad.
+
 Returns array of [user] objects.
 
 Parameters:
@@ -71,6 +63,8 @@ API.room.getUsers(true);
 ```
 
 ### getStaff
+
+Retrieve a list of the pad staff.
 
 Returns an array of staff [user] object.
 
@@ -88,6 +82,8 @@ API.room.getStaff(function (data) {
 
 ### getBannedUsers
 
+Retrieve a list of banned users.
+
 Returns an array of banned [user] object.
 
 Parameters:
@@ -104,6 +100,8 @@ API.room.getBannedUsers(function (data) {
 
 ### getRoles
 
+Retrieve the pads available roles.
+
 Returns array of [role] objects.
 
 Parameters:
@@ -118,6 +116,8 @@ API.room.getRoles(true);
 ```
 
 ### getHistory
+
+Retrieve the queue history.
 
 Returns sorted array of [media] objects.
 
@@ -135,6 +135,8 @@ API.room.getHistory(function (data) {
 
 ### getMedia
 
+Retrieve information about the current video.
+
 Returns [media] object.
 
 ``` javascript
@@ -142,6 +144,8 @@ API.room.getMedia();
 ```
 
 ### getTimeElapsed
+
+Retrieve the time elapsed of the current video.
 
 Returns the time elapsed of the current song in seconds.
 
@@ -151,6 +155,8 @@ API.room.getTimeElapsed();
 
 ### getTimeRemaining
 
+Retrieve the time remaining of the current video.
+
 Returns the time remaining of the current song in seconds.
 
 ``` javascript
@@ -158,6 +164,8 @@ API.room.getTimeRemaining();
 ```
 
 ### banUser
+
+Ban a user.
 
 Parameters:
 
@@ -178,6 +186,8 @@ API.room.banUser(123, API.DATA.USER.BAN.DAY, 'Ban Reason', function (data) {
 
 ### unbanUser
 
+Unban a user.
+
 Parameters:
 
   * user_id | integer | mandatory
@@ -192,6 +202,8 @@ API.room.unbanUser(123, function (data) {
 ```
 
 ### setRole
+
+Set a user's role.
 
 Parameters:
 
@@ -212,6 +224,8 @@ API.room.setRole(123, 'role name', function (data) {
 
 ### join
 
+Join the queue.
+
 Parameters:
 
   * callback | function | optional
@@ -225,6 +239,8 @@ API.queue.join(function (data) {
 
 ### leave
 
+Leave the queue.
+
 Parameters:
 
   * callback | function | optional
@@ -237,6 +253,8 @@ API.queue.leave(function (data) {
 ```
 
 ### modAddDJ
+
+Add a user to the queue.
 
 Parameters:
 
@@ -253,6 +271,8 @@ API.queue.modAddDJ(123, function (data) {
 
 ### modRemoveDJ
 
+Remove a user from the queue.
+
 Parameters:
 
   * user_id | integer | mandatory
@@ -267,6 +287,8 @@ API.queue.modRemoveDJ(123, function (data) {
 ```
 
 ### modSwapDJ
+
+Swap 2 users positions in the queue.
 
 Parameters:
 
@@ -285,6 +307,8 @@ API.queue.modSwapDJ(123, 321, function (data) {
 
 ### modMoveDJ
 
+Move a user to a specified position in the queue.
+
 Parameters:
 
   * user_id | integer | mandatory
@@ -302,6 +326,8 @@ API.queue.modSwapDJ(123, 5, function (data) {
 
 ### skipDJ
 
+Skip the current DJ. This may be used by a mod to skip the current song or by the user playing the song.
+
 Parameters:
 
   * position | integer | optional
@@ -317,6 +343,8 @@ API.queue.skipDJ(5, function (data) {
 ```
 
 ### setLock
+
+Set whether the queue is locked.
 
 Parameters:
 
@@ -334,6 +362,8 @@ API.queue.setLock(true, function (data) {
 
 ### setCycle
 
+Set whether DJ's should be added back into the queue after they DJ.
+
 Parameters:
 
   * cycle_status | boolean | optional
@@ -350,6 +380,8 @@ API.queue.setCycle(true, function (data) {
 
 ### getDJ
 
+Retrieve the current dj's [user] object.
+
 Returns the [user] object of the current DJ.
 
 ``` javascript
@@ -364,15 +396,9 @@ Returns an array containing [user] objects of the queue.
 API.queue.getDJs();
 ```
 
-### getDJ
-
-Returns the [user] object of the current DJ.
-
-``` javascript
-API.queue.getDJ();
-```
-
 ### getPosition
+
+Retrieve the position of a user in the queue.
 
 Returns an integer for the users position in the queue.
 
@@ -384,6 +410,309 @@ Parameters:
 
 ``` javascript
 API.queue.getPosition(123);
+```
+
+## API.chat
+
+### send
+
+Send a chat message to everyone in the pad.
+
+Parameters:
+
+  * message | string | mandatory
+    * The message to send.
+
+``` javascript
+API.chat.send('Message');
+```
+
+### log
+
+Add a log message to the local chat window.
+
+Parameters:
+
+  * message | string | mandatory
+    * Adds the message to the chat in the format of a log message.
+  * message_title | string | optional
+    * A title for the log message
+
+``` javascript
+API.chat.log('Message', 'Message Title');
+```
+
+### system
+
+Add a system message to the local chat window.
+
+Parameters:
+
+  * message | string | mandatory
+    * Adds the message to the chat in the format of a system message.
+
+``` javascript
+API.chat.system('Message');
+```
+
+### broadcast
+
+Send a broadcast message to everyone in the pad.
+
+Parameters:
+
+  * message | string | mandatory
+    * Sends a broadcast message to everyone in the pad.
+
+``` javascript
+API.chat.broadcast('Message');
+```
+
+### delete
+
+Delete a chat message.
+
+Parameters:
+
+  * chat_id | integer | mandatory
+    * Deletes the message with the provided chat id.
+
+``` javascript
+API.chat.delete(123);
+```
+
+## API.playlist
+
+### get
+
+Retrieve an existing playlist.
+
+Parameters:
+
+  * playlist_id | integer | optional
+    * If provided returns the playlist associated with the id.
+	* If not provided will return an array of all playlists for the current user.
+
+``` javascript
+API.playlist.get(1);
+```
+
+### create
+
+Create a new playlist.
+
+Parameters:
+
+  * name | string | mandatory
+    * The name for the playlist.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.playlist.create('Playlist Name', function(data) {
+	// doSomething();
+});
+```
+
+### delete
+
+Delete a playlist.
+
+Parameters:
+
+  * playlist_id | integer | mandatory
+    * The id of the playlist to delete.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.playlist.delete(1, function(data) {
+	// doSomething();
+});
+```
+
+### addSong
+
+Add a song to a playlist.
+
+Parameters:
+
+  * playlist_id | integer | mandatory
+    * The id of the playlist to add the song to.
+  * youtube_id | string | mandatory
+    * The id of the youtube video to add to the playlist.
+  * position | integer | optional
+    * The position in the playlist to add the song at.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.playlist.addSong(1, 'youtube_id', 1, function(data) {
+	// doSomething();
+});
+```
+
+### removeSong
+
+Remove a song from a playlist.
+
+Parameters:
+
+  * playlist_id | integer | mandatory
+    * The id of the playlist to remove the song from.
+  * youtube_id | string | mandatory
+    * The id of the youtube video to remove from the playlist.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.playlist.removeSong(1, 'youtube_id', function(data) {
+	// doSomething();
+});
+```
+
+### moveSong
+
+Move a song to a specified position in a playlist.
+
+Parameters:
+
+  * playlist_id | integer | mandatory
+    * The id of the playlist to move the song in.
+  * youtube_id | string | mandatory
+    * The id of the youtube video to move.
+  * position | integer | optional
+    * The position in the playlist to move the song to.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.playlist.moveSong(1, 'youtube_id', 1, function(data) {
+	// doSomething();
+});
+```
+
+### import
+
+Import a YouTube playlist.
+
+Parameters:
+
+  * youtube_playlist_id | string | mandatory
+    * The id of the YouTube playlist to import.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.playlist.moveSong('youtube_playlist_id', 'youtube_id', 1, function(data) {
+	// doSomething();
+});
+```
+
+### shuffle
+
+Shuffle a playlist into a random order.
+
+Parameters:
+
+  * playlist_id | integer | optional
+    * The id of the playlist to shuffle.
+	* If no playlist_id is provided will shuffle the current active playlist.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.playlist.shuffle(1, function(data) {
+	// doSomething();
+});
+```
+
+## API.player
+
+### setVolume
+
+Set the volume to the specified value.
+
+Parameters:
+
+  * volume | int | mandatory
+    * The volume to set. Must be between 0 and 100.
+
+``` javascript
+API.player.setVolume(50);
+```
+
+### setMute
+
+Set whether the volume is muted or unmuted.
+
+Parameters:
+
+  * mute | boolean | mandatory
+    * Sets whether the volume is muted.
+
+``` javascript
+API.player.setMute(true);
+```
+
+### refresh
+
+Refresh the player.
+
+``` javascript
+API.player.refresh();
+```
+
+### snooze
+
+Snooze the current song.
+
+``` javascript
+API.player.snooze();
+```
+
+## Other API Functions
+
+### on
+
+Subscribe to a socket event.
+
+Returns integer (callback_id) which is unique per event.
+
+Parameters:
+
+  * event | string | mandatory
+    * The event to subscribe to. Available events are located in the [Data API -> EVENTS]
+  * callback | function | mandatory
+	* The function to call when the event is fired.
+
+``` javascript
+API.player.on(API.DATA.EVENTS.EVENT, function(data) {
+	// doSomething();
+});
+```
+
+### off
+
+Unsubscribe from a socket event.
+
+Parameters:
+
+  * event | string | mandatory
+    * The event to unsubscribe from. Available events are located in the [Data API -> EVENTS]
+  * callback_id | integer | mandatory
+    * The unique id for the callback in the event that you want to unsubscribe from. This is the id returned from the `API.on` function.
+
+``` javascript
+API.player.off(API.DATA.EVENTS.EVENT, 1);
+```
+
+### fullscreen
+
+Toggles Fullscreen
+
+``` javascript
+API.player.fullscreen();
 ```
 
 Musiqpad Client API Objects
@@ -421,3 +750,4 @@ Musiqpad Client Data API
 [user]: #musiqpad-client-api-objects-user
 [role]: #musiqpad-client-api-objects-role
 [Data API]: #musiqpad-client-data-api
+[Data API -> EVENTS]: #musiqpad-client-data-api-events
