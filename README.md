@@ -179,7 +179,7 @@ Parameters:
     * Returns once the action has been completed on the server.
 
 ``` javascript
-API.room.banUser(123, API.DATA.USER.BAN.DAY, 'Ban Reason', function (data) {
+API.room.banUser(123, API.DATA.USER.BAN.DAY.duration, 'Ban Reason', function (data) {
   // doSomething();
 });
 ```
@@ -722,7 +722,9 @@ Musiqpad Client API Objects
 
 ``` javascript
 {
-	
+	cid: 'The YouTube Video ID',
+	title: 'The title of the Video',
+	duration: 0
 }
 ```
 
@@ -730,7 +732,10 @@ Musiqpad Client API Objects
 
 ``` javascript
 {
-	
+	banned: false,
+	role: 'default',
+	uid: 123,
+	un: 'Username'
 }
 ```
 
@@ -738,12 +743,120 @@ Musiqpad Client API Objects
 
 ``` javascript
 {
-	
+	canGrantRoles: [], // The roles this user can grant
+	permissions: [], // Permissions granted by having this user role.
+	showtitle: true, // If true the title will be shown on the userlist.
+	style: {
+		color: '#c4a8d6' // Any styles that are applied to a user with this role.
+	}, 
+	title: 'Artist/DJ' // The title of the role.
 }
 ```
 
 Musiqpad Client Data API
 =======
+
+The Data API is available at API.DATA and contains the following objects:
+
+## PLAYER
+### QUALITY
+  * HD2160
+  * HD1440
+  * HD1080
+  * HD720
+  * LQ480
+  * MQ360
+  * SQ240
+  * TQ144
+  * AUTO
+
+## USER
+
+### BAN
+
+  * MIN5:
+    * text: '5 minutes'
+	* duration: 'PT5M'
+  * MIN30:
+    * text: '30 minutes'
+	* duration: 'PT30M'
+  * HOUR:
+    * text: '1 hour'
+	* duration: 'PT1H'
+  * HOUR12:
+    * text: '12 hours'
+	* duration: 'PT12H'
+  * DAY:
+    * text: '1 day'
+	* duration: 'P1DT'
+  * DAY10:
+    * text: '10 days'
+	* duration: 'P10DT'
+  * DAY30:
+    * text: '30 days'
+	* duration: 'P30DT'
+  * PERMA:
+    * text: 'Permanent'
+	* duration: 'P100YT'
+	
+## CHAT
+
+### TSFORMAT
+
+  * HR12
+  * HR24
+  
+## EVENTS
+
+### ADVANCE
+
+### CHAT
+
+### DELETE_CHAT
+
+### DJ_QUEUE_CYCLE
+
+### DJ_QUEUE_LOCK
+
+### DJ_QUEUE_SKIP
+
+### DJ_QUEUE_MOD_SKIP
+
+### DJ_QUEUE_MOVE
+
+### DJ_QUEUE_SWAP
+
+### DJ_QUEUE_ADD
+
+### DJ_QUEUE_REMOVE
+
+### DJ_QUEUE_LIMIT
+
+### USER_JOINED
+
+### USER_JOINED_QUEUE
+
+### USER_LEFT
+
+### USER_LEFT_QUEUE
+
+### USER_UPDATE
+
+### USER_BANNED
+
+### USER_UNBANNED
+
+### USER_ROLE_CHANGE
+
+### VOTE_UPDATE
+
+### SYSTEM_MESSAGE
+
+### BROADCAST_MESSAGE
+
+### PRIVATE_MESSAGE
+
+### SERVER_RESPONSE
 
 [API.room.getRoles]: #musiqpad-client-api-functions-apiroom-getroles
 [media]: #musiqpad-client-api-objects-media
