@@ -168,7 +168,7 @@ Parameters:
   * reason | string | optional
     * The reason for the ban. This will be shown to the user who gets banned.
   * callback | function | optional
-    * Returns once the ban has been applied on the server.
+    * Returns once the action has been completed on the server.
 
 ``` javascript
 API.room.banUser(123, API.DATA.USER.BAN.DAY, 'Ban Reason', function (data) {
@@ -183,7 +183,7 @@ Parameters:
   * user_id | integer | mandatory
     * The id of the user whom you wish to unban.
   * callback | function | optional
-    * Returns once the unban has been applied on the server.
+    * Returns once the action has been completed on the server.
 
 ``` javascript
 API.room.unbanUser(123, function (data) {
@@ -200,12 +200,190 @@ Parameters:
   * role | string | mandatory
     * The role to set the user to. Must match the role name from [API.room.getRoles].
   * callback | function | optional
-    * Returns once the ban has been applied on the server.
+    * Returns once the action has been completed on the server.
 
 ``` javascript
-API.room.banUser(123, API.DATA.USER.BAN.DAY, 'Ban Reason', function (data) {
+API.room.setRole(123, 'role name', function (data) {
   // doSomething();
 });
+```
+
+## API.queue
+
+### join
+
+Parameters:
+
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.join(function (data) {
+  // doSomething();
+});
+```
+
+### leave
+
+Parameters:
+
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.leave(function (data) {
+  // doSomething();
+});
+```
+
+### modAddDJ
+
+Parameters:
+
+  * user_id | integer | mandatory
+    * The id of the user whom you wish to add to the queue.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.modAddDJ(123, function (data) {
+  // doSomething();
+});
+```
+
+### modRemoveDJ
+
+Parameters:
+
+  * user_id | integer | mandatory
+    * The id of the user whom you wish to remove from the queue.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.modRemoveDJ(123, function (data) {
+  // doSomething();
+});
+```
+
+### modSwapDJ
+
+Parameters:
+
+  * user_id_1 | integer | mandatory
+    * The id of the user whom you wish to swap with user_id_2.
+  * user_id_2 | integer | mandatory
+    * The id of the user whom you wish to swap with user_id_1.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.modSwapDJ(123, 321, function (data) {
+  // doSomething();
+});
+```
+
+### modMoveDJ
+
+Parameters:
+
+  * user_id | integer | mandatory
+    * The id of the user whom you wish to move.
+  * position | integer | mandatory
+    * The position you would like to move the user to.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.modSwapDJ(123, 5, function (data) {
+  // doSomething();
+});
+```
+
+### skipDJ
+
+Parameters:
+
+  * position | integer | optional
+    * The position you would like to move the user to after being skipped.
+    * Will 'Lock Skip' the user to the position specified.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.skipDJ(5, function (data) {
+  // doSomething();
+});
+```
+
+### setLock
+
+Parameters:
+
+  * lock_status | boolean | optional
+    * If specified will attempt to set the lock status.
+    * If not specified will toggle the lock.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.setLock(true, function (data) {
+  // doSomething();
+});
+```
+
+### setCycle
+
+Parameters:
+
+  * cycle_status | boolean | optional
+    * If specified will attempt to set the cycle.
+    * If not specified will toggle the cycle.
+  * callback | function | optional
+    * Returns once the action has been completed on the server.
+
+``` javascript
+API.queue.setCycle(true, function (data) {
+  // doSomething();
+});
+```
+
+### getDJ
+
+Returns the [user] object of the current DJ.
+
+``` javascript
+API.queue.getDJ();
+```
+
+### getDJs
+
+Returns an array containing [user] objects of the queue.
+
+``` javascript
+API.queue.getDJs();
+```
+
+### getDJ
+
+Returns the [user] object of the current DJ.
+
+``` javascript
+API.queue.getDJ();
+```
+
+### getPosition
+
+Returns an integer for the users position in the queue.
+
+Parameters:
+
+  * user_id | integer | optional
+    * If specified will get the position of the provided user in the queue.
+    * If not specified will get the position of the current user in the queue.
+
+``` javascript
+API.queue.getPosition(123);
 ```
 
 Musiqpad Client API Objects
@@ -238,7 +416,7 @@ Musiqpad Client API Objects
 Musiqpad Client Data API
 =======
 
-[API.room.getRoles]: #musiqpad-client-api-functions-getroles
+[API.room.getRoles]: #musiqpad-client-api-functions-apiroom-getroles
 [media]: #musiqpad-client-api-objects-media
 [user]: #musiqpad-client-api-objects-user
 [role]: #musiqpad-client-api-objects-role
