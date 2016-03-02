@@ -5,14 +5,13 @@ To Do :- Add Description
 
 *Current version: 0.5 Beta*
 
-API Functions
----------------
+##API Functions
 
 This is a list of all the public functions available in the API.
 
-## API.example
+### API.example
 
-### Example function
+#### Example function
 
 Parameters:
 
@@ -24,9 +23,9 @@ API.example.runExample(function (err, data) {
 });
 ```
 
-## API.room
+### API.room
 
-### getInfo
+#### getInfo
 
 Parameters:
 
