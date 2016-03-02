@@ -95,7 +95,7 @@ API.room.getHistory(function (data) {
 
 ### getMedia
 
-Returns media object
+Returns [media] object
 
 ``` javascript
 API.room.getMedia();
@@ -111,3 +111,5 @@ Musiqpad Client API Objects
 	mediaObject: ""
 }
 ```
+
+[media]: #musiqpad-client-api-objects-media
