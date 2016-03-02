@@ -25,6 +25,8 @@ API.example.runExample(function (err, data) {
 
 ### getInfo
 
+Returns [user] object.
+
 Parameters:
 
   * callback | optional
@@ -55,12 +57,14 @@ API.room.getUser(123, function (data) {
 
 ### getUsers
 
+Returns array of [user] objects.
+
 Parameters:
 
   * is_array | boolean | optional
     * Defaults to false if not provided.
-	* If is_array is set to true then the users will be returned in the format `[{user_object}]`
-	* If is_array is set to false then the users will be returned in the format `{user_id:{user_object}}`
+	* If is_array is set to true then the users will be returned in the format `[{[user_object]}]`
+	* If is_array is set to false then the users will be returned in the format `{user_id:{[user_object]}}`
 
 ``` javascript
 API.room.getUsers(true);
@@ -80,6 +84,8 @@ API.room.getRoles(true);
 ```
 
 ### getHistory
+
+Returns sorted array of [media] objects.
 
 Parameters:
 
@@ -112,4 +118,14 @@ Musiqpad Client API Objects
 }
 ```
 
+## User
+
+``` javascript
+{
+	mediaObject: ""
+}
+```
+
 [media]: #musiqpad-client-api-objects-media
+[user]: #musiqpad-client-api-objects-user
+[user_object]: #musiqpad-client-api-objects-user
