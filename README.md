@@ -1,4 +1,4 @@
-Musiqpad Client API
+Musiqpad Client API Functions
 =======
 
 To Do :- Add Description
@@ -91,4 +91,23 @@ Parameters:
 API.room.getHistory(function (data) {
   // doSomething();
 });
+```
+
+### getMedia
+
+Returns media object
+
+``` javascript
+API.room.getMedia();
+```
+
+Musiqpad Client API Objects
+=======
+
+## Media
+
+``` javascript
+{
+	mediaObject: ""
+}
 ```
