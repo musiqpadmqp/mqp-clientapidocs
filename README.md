@@ -25,8 +25,6 @@ API.example.runExample(function (err, data) {
 
 ### getInfo
 
-Returns [user] object.
-
 Parameters:
 
   * callback | optional
@@ -40,6 +38,8 @@ API.room.getInfo(function (data) {
 ```
 
 ### getUser
+
+Returns a [user] object.
 
 Parameters:
 
@@ -63,14 +63,48 @@ Parameters:
 
   * is_array | boolean | optional
     * Defaults to false if not provided.
-	* If is_array is set to true then the users will be returned in the format `[{[user_object]}]`
-	* If is_array is set to false then the users will be returned in the format `{user_id:{[user_object]}}`
+	* If is_array is set to true then the users will be returned in the format `[{user_object}]`
+	* If is_array is set to false then the users will be returned in the format `{user_id:{user_object}}`
 
 ``` javascript
 API.room.getUsers(true);
 ```
 
+### getStaff
+
+Returns an array of staff [user] object.
+
+Parameters:
+
+  * callback | function | optional
+    * If provided will return the data from a new socket request.
+	* Otherwise will return the data that the client currently has.
+
+``` javascript
+API.room.getStaff(function (data) {
+  // doSomething();
+});
+```
+
+### getBannedUsers
+
+Returns an array of banned [user] object.
+
+Parameters:
+
+  * callback | function | optional
+    * If provided will return the data from a new socket request.
+	* Otherwise will return the data that the client currently has.
+
+``` javascript
+API.room.getBannedUsers(function (data) {
+  // doSomething();
+});
+```
+
 ### getRoles
+
+Returns array of [role] objects.
 
 Parameters:
 
@@ -89,7 +123,7 @@ Returns sorted array of [media] objects.
 
 Parameters:
 
-  * callback | optional
+  * callback | function | optional
     * If provided will return the data from a new socket request.
 	* Otherwise will return the data that the client currently has.
 
@@ -101,10 +135,77 @@ API.room.getHistory(function (data) {
 
 ### getMedia
 
-Returns [media] object
+Returns [media] object.
 
 ``` javascript
 API.room.getMedia();
+```
+
+### getTimeElapsed
+
+Returns the time elapsed of the current song in seconds.
+
+``` javascript
+API.room.getTimeElapsed();
+```
+
+### getTimeRemaining
+
+Returns the time remaining of the current song in seconds.
+
+``` javascript
+API.room.getTimeRemaining();
+```
+
+### banUser
+
+Parameters:
+
+  * user_id | integer | mandatory
+    * The id of the user whom you wish to ban.
+  * duration | string | mandatory
+    * The duration which you would like to ban for. Pre-defined durations are available in the [Data API].
+  * reason | string | optional
+    * The reason for the ban. This will be shown to the user who gets banned.
+  * callback | function | optional
+    * Returns once the ban has been applied on the server.
+
+``` javascript
+API.room.banUser(123, API.DATA.USER.BAN.DAY, 'Ban Reason', function (data) {
+  // doSomething();
+});
+```
+
+### unbanUser
+
+Parameters:
+
+  * user_id | integer | mandatory
+    * The id of the user whom you wish to unban.
+  * callback | function | optional
+    * Returns once the unban has been applied on the server.
+
+``` javascript
+API.room.unbanUser(123, function (data) {
+  // doSomething();
+});
+```
+
+### setRole
+
+Parameters:
+
+  * user_id | integer | mandatory
+    * The id of the user whom you wish to ban.
+  * role | string | mandatory
+    * The role to set the user to. Must match the role name from [API.room.getRoles].
+  * callback | function | optional
+    * Returns once the ban has been applied on the server.
+
+``` javascript
+API.room.banUser(123, API.DATA.USER.BAN.DAY, 'Ban Reason', function (data) {
+  // doSomething();
+});
 ```
 
 Musiqpad Client API Objects
@@ -114,7 +215,7 @@ Musiqpad Client API Objects
 
 ``` javascript
 {
-	mediaObject: ""
+	
 }
 ```
 
@@ -122,10 +223,23 @@ Musiqpad Client API Objects
 
 ``` javascript
 {
-	mediaObject: ""
+	
 }
 ```
 
+## Role
+
+``` javascript
+{
+	
+}
+```
+
+Musiqpad Client Data API
+=======
+
+[API.room.getRoles]: #musiqpad-client-api-functions-getroles
 [media]: #musiqpad-client-api-objects-media
 [user]: #musiqpad-client-api-objects-user
-[user_object]: #musiqpad-client-api-objects-user
+[role]: #musiqpad-client-api-objects-role
+[Data API]: #musiqpad-client-data-api
