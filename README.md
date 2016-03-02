@@ -810,51 +810,329 @@ The Data API is available at API.DATA and contains the following objects:
 
 ### ADVANCE
 
+``` javascript
+{
+  type: 'advance',
+  data: {
+    last: {
+      song: {
+        cid: '',
+        title: '',
+        duration: 0
+      },
+      uid: 123,
+      start: 1456909101882
+    },
+    next: {
+      song: {
+        cid: '',
+        title: '',
+        duration: 0
+      },
+      uid: 123,
+      start: 1456909347005
+    }
+  }
+}
+```
+
 ### CHAT
+
+``` javascript
+{
+  type: 'chat',
+  data: {
+    uid: 123,
+    message: '',
+    time: 1456936308972,
+    cid: 420
+  }
+}
+```
 
 ### DELETE_CHAT
 
+``` javascript
+{
+  type: 'deleteChat',
+  data: {
+    cid: 420,
+    mid: 123
+  }
+}
+```
+
 ### DJ_QUEUE_CYCLE
+
+``` javascript
+{
+  type: 'djQueueCycle',
+  data: {
+    mid: 123,
+    state: true
+  }
+}
+```
 
 ### DJ_QUEUE_LOCK
 
+``` javascript
+{
+  type: 'djQueueLock',
+  data: {
+    mid: 123,
+    state: true
+  }
+}
+```
+
 ### DJ_QUEUE_SKIP
+
+``` javascript
+{
+  type: 'djQueueSkip',
+  data: {
+    uid: 123
+  }
+}
+```
 
 ### DJ_QUEUE_MOD_SKIP
 
+``` javascript
+{
+  type: 'djQueueModSkip',
+  data: {
+    mid: 123
+  }
+}
+```
+
 ### DJ_QUEUE_MOVE
+
+``` javascript
+{
+  type: 'djQueueModMove',
+  data: {
+    queueList: [123,321],
+    uid: 123,
+    from: 1,
+    to: 0,
+    mid: 123
+  }
+}
+```
 
 ### DJ_QUEUE_SWAP
 
+``` javascript
+{
+  type: 'djQueueModSwap',
+  data: {
+    queueList: [321,123],
+    uid1: 123,
+    uid2: 321,
+    pos1: 0,
+    pos2: 1,
+    mid: 123
+  }
+}
+```
+
 ### DJ_QUEUE_ADD
+
+``` javascript
+{
+  type: 'djQueueModAdd',
+  data: {
+    mid: 123,
+    uid: 123
+  }
+}
+```
 
 ### DJ_QUEUE_REMOVE
 
+``` javascript
+{
+  type: 'djQueueModRemove',
+  data: {
+    mid: 123,
+    uid: 123
+  }
+}
+```
+
 ### DJ_QUEUE_LIMIT
+
+``` javascript
+
+```
 
 ### USER_JOINED
 
+``` javascript
+{
+  type: 'userJoined',
+  data: {
+    user: {
+      badge: {
+        top: '#003cff',
+        bottom: '#ffffff'
+      },
+      banned: false,
+      role: 'default',
+      un: 'Username',
+      uid: 1
+    },
+    guests: 5
+  }
+}
+```
+
 ### USER_JOINED_QUEUE
+
+``` javascript
+{
+  type: 'userJoinedQueue',
+  data: {
+  	queueList: [123,321,456,654]
+  }
+}
+```
 
 ### USER_LEFT
 
+``` javascript
+{
+  type: 'userLeft',
+  data: {
+    user: {
+      badge: {
+        top: '#003cff',
+        bottom: '#ffffff'
+      },
+      banned: false,
+      role: 'default',
+      un: 'Username',
+      uid: 1
+    },
+    guests: 5
+  }
+}
+```
+
 ### USER_LEFT_QUEUE
+
+``` javascript
+{
+  type: 'userLeftQueue',
+  data: {
+  	queueList: [123,321,456,654]
+  }
+}
+```
 
 ### USER_UPDATE
 
+``` javascript
+{
+  type: 'userUpdate',
+  data: {
+    user: {
+      badge: {
+        top: '#003cff',
+        bottom: '#ffffff'
+      },
+      banned: false,
+      role: 'default',
+      un: 'Username',
+      uid: 1
+    }
+  }
+}
+```
+
 ### USER_BANNED
+
+``` javascript
+{
+  type: 'userBanned',
+  data: {
+    uid: 321,
+    bannedBy: 123
+  }
+}
+```
 
 ### USER_UNBANNED
 
+``` javascript
+{
+  type: 'userUnbanned',
+  data: {
+    uid: 321,
+    unbannedBy: 123
+  }
+}
+```
+
 ### USER_ROLE_CHANGE
+
+``` javascript
+{
+  type: 'moderateSetRole',
+  data: {
+    mid: 123,
+    uid: 321,
+    role: 'supervisor'
+  }
+}
+```
 
 ### VOTE_UPDATE
 
+``` javascript
+{
+  type: 'voteUpdate',
+  data: {
+    votes: {
+      like: 5,
+      dislike: 0,
+      grab: 0
+    },
+    action: 'like',
+    voted: 1
+  }
+}
+```
+
 ### SYSTEM_MESSAGE
+
+``` javascript
+
+```
 
 ### BROADCAST_MESSAGE
 
+``` javascript
+{
+  type: 'broadcastMessage',
+  data: 'Test Message'
+}
+```
+
 ### PRIVATE_MESSAGE
+
+``` javascript
+{
+  type: 'privateMessage',
+  data: {
+    uid: 123,
+    message: 'Test Message'
+  }
+}
+```
 
 ### SERVER_RESPONSE
 
