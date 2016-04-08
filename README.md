@@ -687,7 +687,7 @@ Parameters:
 	* The function to call when the event is fired.
 
 ``` javascript
-API.player.on(API.DATA.EVENTS.EVENT, function(data) {
+API.on(API.DATA.EVENTS.EVENT, function(data) {
 	// doSomething();
 });
 ```
@@ -704,15 +704,30 @@ Parameters:
     * The unique id for the callback in the event that you want to unsubscribe from. This is the id returned from the `API.on` function.
 
 ``` javascript
-API.player.off(API.DATA.EVENTS.EVENT, 1);
+API.off(API.DATA.EVENTS.EVENT, 1);
 ```
 
-### fullscreen
+### player.fullscreen
 
 Toggles Fullscreen
 
 ``` javascript
 API.player.fullscreen();
+```
+
+### util.hasPermission
+
+Checks if the specified/current user has a permission.
+
+Parameters:
+
+  * user_id | int | optional
+    * The ID of the user to check the permission for. If this is not provided this function will check the permission against the current user.
+  * permission | string | mandatory
+    * The permission string you would like to check.
+
+``` javascript
+API.util.hasPermission(123, 'chat.send');
 ```
 
 Musiqpad Client API Objects
