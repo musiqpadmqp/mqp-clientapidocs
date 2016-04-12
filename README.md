@@ -3,7 +3,7 @@ Musiqpad Client API Functions
 
 To Do :- Add Description
 
-*Current version: 0.5 Beta*
+*Current version: 0.5.3 Beta*
 
 This is a list of all the public functions available in the API.
 
