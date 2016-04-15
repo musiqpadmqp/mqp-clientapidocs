@@ -115,6 +115,26 @@ Parameters:
 API.room.getRoles(true);
 ```
 
+### getStaffRoles
+
+Retrieve the roles that are marked as staff.
+
+Returns array of [role] objects.
+
+``` javascript
+API.room.getStaffRoles();
+```
+
+### getRoleOrder
+
+Retrieve the pads staff role order.
+
+Returns array of [role] objects.
+
+``` javascript
+API.room.getRoleOrder();
+```
+
 ### getHistory
 
 Retrieve the queue history.
