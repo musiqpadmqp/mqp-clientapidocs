@@ -889,7 +889,6 @@ The Data API is available at API.DATA and contains the following objects:
 
 ``` javascript
 {
-  type: 'chat_command',
   data: 'message'
 }
 ```
