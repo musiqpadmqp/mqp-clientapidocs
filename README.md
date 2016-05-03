@@ -885,6 +885,15 @@ The Data API is available at API.DATA and contains the following objects:
 }
 ```
 
+### CHAT_COMMAND
+
+``` javascript
+{
+  type: 'chat_command',
+  data: 'message'
+}
+```
+
 ### DELETE_CHAT
 
 ``` javascript
